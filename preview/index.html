@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow Studio by Sanjana — Hair &amp; Bridal Studio, MVP Colony, Visakhapatnam</title>
+<meta name="description" content="Hair, keratin &amp; bridal makeup in MVP Colony, Vizag. Prices confirmed in writing before we start. Send a photo — a stylist replies in 10 minutes.">
+<style>
+  :root{
+    --ink:#241c1a; --ink-soft:#584a46; --muted:#8a7a74;
+    --cream:#fffbf7; --cream-2:#fdf3ee; --line:#f0e2da;
+    --rose:#b0465e; --rose-dark:#8e3549; --gold:#c99a5b; --green:#2f6b4f;
+    --serif:Georgia,'Iowan Old Style','Times New Roman',serif;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);
+       font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  .narrow{max-width:760px;margin:0 auto;padding:0 22px}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:700;line-height:1.18;letter-spacing:-.01em;margin:0 0 .5em}
+  h1{font-size:clamp(2.1rem,5.2vw,3.6rem)}
+  h2{font-size:clamp(1.6rem,3.4vw,2.3rem)}
+  h3{font-size:1.22rem;letter-spacing:0}
+  p{margin:0 0 1.05em}
+  a{color:inherit}
+  .eyebrow{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.16em;
+           text-transform:uppercase;color:var(--rose);margin:0 0 .8em}
+  .btn{display:inline-block;padding:15px 26px;border-radius:999px;font-weight:600;
+       font-size:.96rem;text-decoration:none;border:1.5px solid transparent;transition:.18s;white-space:nowrap}
+  .btn-primary{background:var(--rose);color:#fff}
+  .btn-primary:hover{background:var(--rose-dark)}
+  .btn-ghost{border-color:currentColor;color:var(--ink)}
+  .btn-ghost:hover{background:#fff}
+  .btn-wa{background:#1f9d55;color:#fff}
+  .btn-wa:hover{background:#178048}
+
+  /* top demo strip */
+  .demo{background:#241c1a;color:#e6dbd6;font-size:.74rem;letter-spacing:.04em;
+        text-align:center;padding:8px 20px}
+  .demo b{color:#f3c9a8;font-weight:600}
+
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:40;background:rgba(255,251,247,.94);
+             backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px;
+          padding:14px 22px;max-width:1080px;margin:0 auto}
+  .brand{font-family:var(--serif);font-size:1.18rem;font-weight:700;text-decoration:none;letter-spacing:-.02em}
+  .brand small{display:block;font-family:var(--sans);font-size:.62rem;font-weight:600;
+               letter-spacing:.14em;text-transform:uppercase;color:var(--muted);letter-spacing:.12em}
+  nav.links{display:flex;gap:26px;font-size:.92rem}
+  nav.links a{text-decoration:none;color:var(--ink-soft);font-weight:500}
+  nav.links a:hover{color:var(--rose)}
+  .nav-cta{display:flex;align-items:center;gap:14px;font-size:.9rem}
+  .nav-cta .btn{padding:11px 20px;font-size:.88rem}
+  @media(max-width:860px){nav.links{display:none}}
+
+  /* hero */
+  .hero{padding:70px 0 30px}
+  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:52px;align-items:center}
+  @media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:34px}}
+  .hero h1{margin-bottom:.35em}
+  .hero .sub{font-size:1.13rem;color:var(--ink-soft);max-width:34em}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 22px}
+  .trust{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:.85rem;color:var(--ink-soft);
+         padding-top:18px;border-top:1px solid var(--line)}
+  .trust span{display:flex;align-items:center;gap:8px}
+  .tick{width:15px;height:15px;flex:none;color:var(--green)}
+  .hero-photo{border-radius:22px;overflow:hidden;background:var(--cream-2);border:1px solid var(--line)}
+  .hero-photo svg{display:block;width:100%;height:auto}
+
+  /* bands */
+  section{padding:62px 0}
+  .band{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .band-cream{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .lead{font-size:1.06rem;color:var(--ink-soft)}
+  blockquote.story{margin:0 0 16px;padding-left:20px;border-left:3px solid var(--rose);
+                   font-family:var(--serif);font-size:1.16rem;line-height:1.5}
+
+  /* why us */
+  .grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:34px}
+  @media(max-width:780px){.grid4{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 24px}
+  .card h3{margin-bottom:.45em;color:var(--ink)}
+  .card p{margin:0;color:var(--ink-soft);font-size:.97rem}
+  .num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;
+       border-radius:50%;background:var(--cream-2);color:var(--rose);font-weight:700;
+       font-size:.85rem;margin-bottom:14px;font-family:var(--sans)}
+
+  /* price table */
+  .tbl-wrap{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;margin-top:30px}
+  table{width:100%;border-collapse:collapse;font-size:.95rem}
+  th{background:var(--cream-2);text-align:left;padding:14px 20px;font-size:.72rem;
+     letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  td{padding:14px 20px;border-top:1px solid var(--line);vertical-align:top}
+  td.price{text-align:right;white-space:nowrap;font-weight:700;color:var(--rose);font-variant-numeric:tabular-nums}
+  .svc{font-weight:600;color:var(--ink)}
+  .bet{color:var(--muted);font-size:.9rem}
+  @media(max-width:640px){
+    th:nth-child(2),td:nth-child(2){display:none}
+    th,td{padding:12px 14px}
+  }
+  .tiny{font-size:.82rem;color:var(--muted);margin-top:14px}
+  .flag{color:var(--gold);font-weight:700;font-size:.75em;vertical-align:super}
+
+  /* keratin block */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:start}
+  @media(max-width:820px){.split{grid-template-columns:1fr;gap:26px}}
+  .steps{counter-reset:s;list-style:none;padding:0;margin:26px 0 0}
+  .steps li{counter-increment:s;position:relative;padding-left:46px;margin-bottom:18px;color:var(--ink-soft)}
+  .steps li:before{content:counter(s);position:absolute;left:0;top:1px;width:30px;height:30px;
+      border-radius:50%;background:var(--rose);color:#fff;font-size:.82rem;font-weight:700;
+      display:flex;align-items:center;justify-content:center;font-family:var(--sans)}
+  .steps b{color:var(--ink)}
+
+  /* testimonials */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+  @media(max-width:880px){.grid3{grid-template-columns:1fr}}
+  .quote{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px}
+  .stars{color:var(--gold);letter-spacing:2px;font-size:.9rem}
+  .quote p{margin:0;font-size:.96rem;color:var(--ink-soft)}
+  .who{font-size:.82rem;color:var(--muted);font-weight:600;margin-top:auto}
+  .placeholder-note{background:#fff8e8;border:1px solid #f0dcae;border-radius:12px;
+      padding:12px 16px;font-size:.82rem;color:#7a5c1e;margin-top:26px}
+
+  /* location */
+  .loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  @media(max-width:820px){.loc-grid{grid-template-columns:1fr}}
+  .loc-list{list-style:none;padding:0;margin:0;font-size:.97rem;color:var(--ink-soft)}
+  .loc-list li{padding-left:26px;position:relative;margin-bottom:12px}
+  .loc-list li:before{content:"→";position:absolute;left:0;color:var(--rose);font-weight:700}
+  .addr{font-family:var(--serif);font-size:1.3rem;line-height:1.45;margin-bottom:18px}
+
+  /* faq */
+  details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+  summary{cursor:pointer;padding:19px 24px;font-weight:600;font-family:var(--serif);
+          font-size:1.06rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";color:var(--rose);font-size:1.4rem;line-height:1;font-family:var(--sans)}
+  details[open] summary:after{content:"–"}
+  details .ans{padding:0 24px 20px;color:var(--ink-soft);font-size:.96rem}
+
+  /* closing */
+  .closing{background:var(--ink);color:#f6ece7;text-align:center;padding:74px 0}
+  .closing h2{color:#fff;max-width:22em;margin:0 auto .45em}
+  .closing p{color:#cbb9b2;max-width:34em;margin:0 auto 28px}
+  .closing .btn-ghost{color:#f6ece7;border-color:#5b4842}
+  .closing .btn-ghost:hover{background:#332826}
+
+  footer{padding:34px 0 90px;font-size:.86rem;color:var(--muted)}
+  .foot-in{display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:space-between;
+           border-top:1px solid var(--line);padding-top:24px}
+
+  /* sticky whatsapp */
+  .sticky{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;align-items:center;
+          gap:10px;background:#1f9d55;color:#fff;text-decoration:none;padding:14px 20px;
+          border-radius:999px;font-weight:600;font-size:.9rem;box-shadow:0 10px 28px rgba(31,157,85,.32)}
+  .sticky:hover{background:#178048}
+  @media(max-width:640px){.sticky{right:14px;bottom:14px;padding:13px 17px;font-size:.84rem}
+           .sticky span.long{display:none}}
+  .madeby{font-size:.78rem;color:var(--muted);text-align:center;padding-bottom:18px}
+</style>
+</head>
+<body>
+
+<div class="demo">COPY PREVIEW &nbsp;·&nbsp; Glow Studio by Sanjana, MVP Colony, Visakhapatnam &nbsp;·&nbsp; <b>Generated with the AI Website Copy Generator</b> &nbsp;·&nbsp; figures marked ⓥ need client confirmation</div>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top">Glow Studio<small>by Sanjana · Vizag</small></a>
+    <nav class="links">
+      <a href="#services">Services &amp; Prices</a>
+      <a href="#bridal">Bridal</a>
+      <a href="#treatments">Hair Treatments</a>
+      <a href="#visit">Visit Us</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-wa" href="#book">WhatsApp us</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Hair &amp; Bridal Studio · MVP Colony, Visakhapatnam</p>
+        <h1>Hair that behaves every morning.<br>Makeup that survives a 12-hour wedding.</h1>
+        <p class="sub">A hair and bridal studio in Visakhapatnam for women who want a look that still holds up in three months — not just on the day they left the chair.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#book">WhatsApp us for a price</a>
+          <a class="btn btn-ghost" href="#services">See services &amp; prices</a>
+        </div>
+        <div class="trust">
+          <span><svg class="tick" viewBox="0 0 20 20" fill="currentColor"><path d="M8.1 13.9 4.6 10.4l-1.1 1.1 4.6 4.6 9.4-9.4-1.1-1.1z"/></svg> <b>4,500+ clients</b> since 2019 <sup class="flag">V</sup></span>
+          <span><svg class="tick" viewBox="0 0 20 20" fill="currentColor"><path d="M8.1 13.9 4.6 10.4l-1.1 1.1 4.6 4.6 9.4-9.4-1.1-1.1z"/></svg> L'Oréal Professionnel &amp; Schwarzkopf colour</span>
+          <span><svg class="tick" viewBox="0 0 20 20" fill="currentColor"><path d="M8.1 13.9 4.6 10.4l-1.1 1.1 4.6 4.6 9.4-9.4-1.1-1.1z"/></svg> Replies in 10 minutes on WhatsApp</span>
+        </div>
+      </div>
+      <div class="hero-photo" aria-hidden="true">
+        <svg viewBox="0 0 520 460" role="img" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fbe6de"/><stop offset="1" stop-color="#f3cfc4"/>
+            </linearGradient>
+          </defs>
+          <rect width="520" height="460" fill="url(#g1)"/>
+          <circle cx="372" cy="126" r="86" fill="#ffffff" opacity=".5"/>
+          <circle cx="132" cy="352" r="104" fill="#ffffff" opacity=".35"/>
+          <path d="M150 460c0-86 44-150 110-150s110 64 110 150z" fill="#b0465e" opacity=".22"/>
+          <path d="M214 460c0-60 22-104 46-104s46 44 46 104z" fill="#b0465e" opacity=".3"/>
+          <ellipse cx="260" cy="252" rx="74" ry="90" fill="#8e3549" opacity=".18"/>
+          <path d="M186 250c0-56 33-96 74-96s74 40 74 96c0 46-8 78-20 104-14-30-22-70-22-104-16 10-52 14-84 6 0 34-8 70-22 98-12-26-20-58-20-104z" fill="#6b4a3a" opacity=".5"/>
+          <circle cx="258" cy="118" r="6" fill="#fff" opacity=".7"/>
+          <circle cx="418" cy="330" r="30" fill="#fff" opacity=".45"/>
+          <text x="34" y="52" font-family="Georgia,serif" font-size="19" fill="#8e3549" opacity=".85">Since 2019 · 4 chairs · MVP Colony</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="band-cream">
+    <div class="narrow">
+      <p class="eyebrow">Sound familiar?</p>
+      <h2>You are not the problem.</h2>
+      <blockquote class="story">You asked for a trim. You lost four inches.</blockquote>
+      <blockquote class="story">You paid for keratin and got three weeks of shine before the frizz came back.</blockquote>
+      <blockquote class="story">You were told ₹3,000 at the door and ₹5,200 at the counter.</blockquote>
+      <p class="lead" style="margin-top:26px">None of that is a you problem. It's a studio problem — skipping the consultation, using a trainee on colour, and quoting a price before anyone has looked at your hair. We built Glow Studio in 2019 to fix exactly those three things. It's why our clients stay for years, and why 300 brides have trusted us with the biggest day of their lives. <sup class="flag">V</sup></p>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Why us</p>
+      <h2>Four things you won't hear at most studios.</h2>
+      <div class="grid4">
+        <div class="card">
+          <span class="num">1</span>
+          <h3>A 15-minute consultation, before anything else</h3>
+          <p>Every service starts with a proper look at your hair and scalp, not a price list. If a treatment will damage your hair, Sanjana will tell you and suggest a repair plan instead. We have talked people out of ₹6,000 treatments more times than we can count.</p>
+        </div>
+        <div class="card">
+          <span class="num">2</span>
+          <h3>A patch test 24 hours before every colour service</h3>
+          <p>Yes, it costs you one extra trip. It also means you find out about an allergy on a Tuesday, not on your wedding morning. Every colour client gets one.</p>
+        </div>
+        <div class="card">
+          <span class="num">3</span>
+          <h3>Senior stylists only — no one learns colour on your hair</h3>
+          <p>Colour and chemical treatments are done by Sanjana and two senior stylists with 8+ years each. Our junior team handles washes, blow-dries and styling only. <sup class="flag">V</sup></p>
+        </div>
+        <div class="card">
+          <span class="num">4</span>
+          <h3>A written price before we start</h3>
+          <p>You get the final amount on paper before the first clip or the first bowl of colour. Nothing gets added to your bill mid-service. Ever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="band">
+    <div class="wrap">
+      <p class="eyebrow">Services &amp; starting prices</p>
+      <h2>What it costs, before you walk in.</h2>
+      <p class="lead" style="max-width:46em">Starting prices shown. Long or thick hair, product range and add-ons affect the final figure — always confirmed in writing before we begin.</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Service</th><th>Best for</th><th style="text-align:right">From</th></tr></thead>
+          <tbody>
+            <tr><td class="svc">Haircut &amp; finish</td><td class="bet">A cut that grows out well, so you're not back in 3 weeks</td><td class="price">₹500</td></tr>
+            <tr><td class="svc">Hair spa</td><td class="bet">60 minutes that resets dry, dull hair</td><td class="price">₹900</td></tr>
+            <tr><td class="svc">Keratin treatment</td><td class="bet">Smooth, manageable hair for 3–5 months</td><td class="price">₹4,500</td></tr>
+            <tr><td class="svc">Hair smoothening</td><td class="bet">Straight hair without the daily iron</td><td class="price">₹3,800</td></tr>
+            <tr><td class="svc">Hair botox (repair)</td><td class="bet">Damaged, over-processed hair</td><td class="price">₹5,000</td></tr>
+            <tr><td class="svc">Global colour</td><td class="bet">Grey coverage that doesn't turn brassy</td><td class="price">₹2,500</td></tr>
+            <tr><td class="svc">Highlights</td><td class="bet">Dimension that grows out naturally</td><td class="price">₹3,500</td></tr>
+            <tr><td class="svc">O3+ facial</td><td class="bet">A visible glow within 60 minutes</td><td class="price">₹1,500</td></tr>
+            <tr><td class="svc">Bridal HD makeup</td><td class="bet">12 hours in Vizag humidity</td><td class="price">₹18,000</td></tr>
+            <tr><td class="svc">Pre-bridal package</td><td class="bet">45 days to wedding-day skin</td><td class="price">₹15,000</td></tr>
+            <tr><td class="svc">Party makeup &amp; nails</td><td class="bet">Function-ready in 90 minutes</td><td class="price">₹2,500</td></tr>
+            <tr><td class="svc">Threading &amp; waxing</td><td class="bet">Quick upkeep, no appointment needed</td><td class="price">₹40</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tiny"><span class="flag">V</span> All prices to be confirmed against the current rate card before publishing. Kept in text (not images) so Google can read them.</p>
+      <div style="margin-top:26px"><a class="btn btn-wa" href="#book">Check this week's slots</a></div>
+    </div>
+  </section>
+
+  <!-- KERATIN -->
+  <section id="treatments">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Keratin &amp; smoothening</p>
+        <h2>Three to five months of smooth. Not three weeks of shine.</h2>
+        <p class="lead">Most people who say “keratin ruined my hair” went to a studio that skipped two steps. Here is what actually happens at Glow Studio.</p>
+        <p>We start with a <b>15-minute strand assessment</b>. If your hair has been bleached twice in the last three months, we say no to keratin and recommend hair botox or a repair plan first — we'd rather lose the bill than damage your hair.</p>
+        <p>Then: a clarifying wash, the protein treatment applied section by section (3–4 hours in the chair, so plan your day), a seal, and a finish. You leave with <b>aftercare instructions written down</b>, not just spoken, because what you use at home decides whether this lasts 3 months or 5.</p>
+        <a class="btn btn-primary" href="#book" style="margin-top:10px">Send a photo — price range in 10 minutes</a>
+      </div>
+      <div>
+        <h3 style="margin-top:8px">How a visit works</h3>
+        <ol class="steps">
+          <li><b>You message us on WhatsApp.</b> Send a photo of your hair and what you're hoping for. You'll hear back within 10 minutes, 10 AM – 8:30 PM.</li>
+          <li><b>We give you a price range and the honest version.</b> What's possible on your hair, how long it takes, what it costs. No appointment needed for this step.</li>
+          <li><b>Free 15-minute consultation in the studio.</b> Before any service. We confirm the plan and write the price down. For colour, this is when we schedule your patch test.</li>
+          <li><b>You leave with the result and aftercare in writing.</b> Plus a 7-day window to tell us if something isn't right. <sup class="flag">V</sup></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="band-cream">
+    <div class="wrap">
+      <p class="eyebrow">What our clients say</p>
+      <h2>Reviews, not adjectives.</h2>
+      <div class="grid3">
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          <p>“Came in with hair that hadn't been cut in a year. They were honest that I needed repair first, not keratin. Three months later it's still smoothening easily.”</p>
+          <div class="who">Sravani · MVP Colony · Keratin</div>
+        </div>
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          <p>“Sanjana did my trial twice because my lehenga colour changed. On the wedding day, makeup was still intact at 11 PM in October humidity.”</p>
+          <div class="who">Divya · Gajuwaka · Bridal package</div>
+        </div>
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          <p>“Nobody tried to sell me anything extra. Price was written down before they started, which no salon has ever done for me.”</p>
+          <div class="who">Lakshmi · Seethammadhara · Haircut &amp; colour</div>
+        </div>
+      </div>
+      <p class="placeholder-note"><b>Note for the client:</b> these three are format examples. Send us your best Google reviews (or use the review-request message in your copy document) and we'll swap them in verbatim before publishing.</p>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit">
+    <div class="wrap loc-grid">
+      <div>
+        <p class="eyebrow">Visit us</p>
+        <h2>Above Sri Sai Bakery, MVP Colony.</h2>
+        <p class="addr">1st Floor, above Sri Sai Bakery<br>MVP Colony Main Road, Sector 4<br>Visakhapatnam — 530017</p>
+        <ul class="loc-list">
+          <li><b>4 minutes' walk</b> from the MVP Colony bus stop, opposite the Sector 4 park entrance</li>
+          <li>Two-wheeler parking right outside; cars park on the main road</li>
+          <li>Open <b>10 AM – 8:30 PM, all seven days</b></li>
+          <li><b>Best times to walk in:</b> weekdays between 11 AM and 4 PM</li>
+          <li>Long services (keratin, colour, bridal) need 2–4 hours — message us first</li>
+          <li>Coming from Gajuwaka or Pendurthi? Allow 25 minutes extra in evening traffic</li>
+        </ul>
+        <a class="btn btn-ghost" href="#book" style="margin-top:8px">Open in Google Maps</a>
+      </div>
+      <div class="hero-photo" aria-hidden="true">
+        <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
+          <rect width="520" height="380" fill="#fdf3ee"/>
+          <path d="M40 300h440" stroke="#e8cfc4" stroke-width="2"/>
+          <rect x="70" y="150" width="130" height="150" fill="#f6ddd3"/>
+          <rect x="220" y="110" width="150" height="190" fill="#fbe9e2"/>
+          <rect x="390" y="180" width="90" height="120" fill="#f3d5c8"/>
+          <path d="M235 240h30v60h-30z" fill="#b0465e" opacity=".35"/>
+          <path d="M320 60l140 0" stroke="#c99a5b" stroke-width="3"/>
+          <circle cx="120" cy="100" r="26" fill="#c99a5b" opacity=".28"/>
+          <text x="70" y="345" font-family="Georgia,serif" font-size="21" fill="#8e3549">MVP Colony Main Road · Sector 4</text>
+          <text x="70" y="372" font-family="system-ui,sans-serif" font-size="14" fill="#8a7a74">Free 15-minute consultation · Walk-ins welcome on weekdays</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="band">
+    <div class="narrow">
+      <p class="eyebrow">Frequently asked</p>
+      <h2>The questions we answer on WhatsApp every day.</h2>
+
+      <details open><summary>How much does keratin cost in Visakhapatnam?</summary>
+        <div class="ans">At Glow Studio it starts at ₹4,500 and usually lands between ₹4,500 and ₹8,000 depending on hair length and thickness. We confirm the exact price after the free 15-minute consultation, before we start. <sup class="flag">V</sup></div></details>
+
+      <details><summary>Will keratin damage my hair?</summary>
+        <div class="ans">Done correctly, no. When the clarifying and sealing steps are rushed, hair comes out brittle. If your hair isn't ready for it, we'll say so and suggest hair botox or a repair plan instead.</div></details>
+
+      <details><summary>Can I just walk in?</summary>
+        <div class="ans">Yes, for haircuts, threading, waxing and facials. For keratin, smoothening, colour or bridal, message us first — those need 2–4 hours and we won't rush yours to fit someone else in.</div></details>
+
+      <details><summary>Will the same person do my trial and my wedding-day makeup?</summary>
+        <div class="ans">Yes. Sanjana handles bridal bookings herself, including the trial. Both your trial and your wedding date go into her calendar, not the studio's.</div></details>
+
+      <details><summary>Do you charge extra once I'm sitting in the chair?</summary>
+        <div class="ans">No. You get the final price in writing before we start, and it stays that price. Add-ons happen only if you ask for them.</div></details>
+
+      <details><summary>How far in advance should I book a bridal trial?</summary>
+        <div class="ans">For weddings between November and February, book 3–4 months ahead. Trials are limited to four per weekend since Sanjana does them personally, and November typically books out by mid-October.</div></details>
+    </div>
+  </section>
+
+  <!-- BRIDAL CTA -->
+  <section id="bridal" class="band-cream">
+    <div class="narrow" style="text-align:center">
+      <p class="eyebrow">Bridal · Nov to Feb dates fill fast</p>
+      <h2>Sanjana does every trial herself. That's why we take only four a weekend.</h2>
+      <p class="lead">300+ Vizag brides since 2019. <sup class="flag">V</sup> If your wedding falls between November and February, send your date over — you'll know within 10 minutes whether she's free.</p>
+      <div style="margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn-primary" href="#book">Check my wedding date</a>
+        <a class="btn btn-ghost" href="#book">See pre-bridal packages</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- CLOSING -->
+<section class="closing" id="book">
+  <div class="narrow">
+    <h2>Your hair, sorted — by people who'll tell you the truth.</h2>
+    <p>Send us a photo on WhatsApp. You'll have a price and an honest opinion in 10 minutes, and there's nothing to pay to ask.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a class="btn btn-wa" href="#">WhatsApp a photo</a>
+      <a class="btn btn-ghost" href="#">Call the studio</a>
+    </div>
+    <p style="margin-top:26px;font-size:.86rem">You don't need an appointment to ask a price. If you decide not to come, that's completely fine — no follow-up calls, no pressure messages.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div><b style="font-family:Georgia,serif;font-size:1rem;color:#241c1a">Glow Studio by Sanjana</b><br>MVP Colony, Visakhapatnam · Open all days, 10 AM – 8:30 PM</div>
+    <div>Services &amp; Prices · Bridal · Hair Treatments · Visit Us · FAQ</div>
+    <div>_[studio's WhatsApp number]_ · WhatsApp · Google Maps</div>
+  </div>
+</footer>
+<div class="madeby">Copy deck built with the AI Website Copy Generator · prompt system &amp; source in the project repository</div>
+
+<a class="sticky" href="#book">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.7-.1-.9-.3-2.4-1-3.8-2.4-1.4-1.4-2.2-3-2.5-3.9-.3-.9-.2-1.6 0-2.1.2-.4.8-1.2 1.2-1.3.3 0 .6 0 .8.4l.8 1.6c.1.2.1.4 0 .6l-.4.5c-.1.2-.2.3 0 .6.2.3.7 1.1 1.4 1.7.8.7 1.5 1 1.8 1.1.2.1.4.1.5-.1l.5-.6c.2-.2.3-.2.6-.1l1.6.8c.3.2.4.4.4.6 0 .2 0 .5-.1.8Z"/></svg>
+  <span class="long">WhatsApp us a photo</span>
+</a>
+
+</body>
+</html>
